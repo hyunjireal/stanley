@@ -1,0 +1,225 @@
+@charset "utf-8";
+
+:root {
+    --header-top-h: 30px;
+    --header-bottom-h: 70px;
+    --header-total-h: calc(var(--header-top-h) + var(--header-bottom-h));
+}
+
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+/* =========================
+   공통 inner
+   ========================= */
+.inner {
+    width: 100%;
+    max-width: 1520px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.wrap {
+    width: 100%;
+}
+
+/* =========================
+   HEADER
+   ========================= */
+header {
+    width: 100%;
+    z-index: 999;
+}
+
+header.sc {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(12px);
+}
+
+header .top {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: var(--header-top-h);
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1001;
+}
+
+header .top .inner {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header .top ul {
+    display: flex;
+}
+
+header .top ul li {
+    padding: 0 22px;
+    font-size: 14px;
+    color: #eaeaea;
+}
+
+header .top li:last-child {
+    padding-right: 0;
+}
+
+header .top ul li a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* =========================
+   HEADER BOTTOM
+   ========================= */
+header .bottom {
+    position: fixed;
+    left: 0;
+    top: var(--header-top-h);
+    width: 100%;
+    height: var(--header-bottom-h);
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform .35s ease;
+    will-change: transform;
+    z-index: 1000;
+    overflow: visible;
+}
+
+header.bottom-hide .bottom {
+    transform: translateY(calc(-1 * var(--header-total-h)));
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+header .bottom .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .nav {
+    position: relative;
+    display: flex;
+}
+
+header .bottom .right {
+    display: flex;
+    gap: 16px;
+}
+
+/* =========================
+   GNB (MENU)
+   ========================= */
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+header .gnb {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+}
+
+header .gnb_link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111;
+}
+
+header .sub {
+    display: none;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+footer {
+    width: 100%;
+    padding: 60px 0 100px;
+    background: #ccc;
+}
+
+footer .inner .f_top {
+    display: flex;
+    justify-content: space-between;
+}
+
+footer .inner .f_top .logo_box .logo {
+    font-size: 74px;
+    font-weight: 600;
+    /* semibold */
+    letter-spacing: -3px;
+    line-height: normal;
+}
+
+footer .inner .f_top .btn_box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+footer .inner .f_top .btn_box .sns {
+    display: flex;
+    gap: 10px;
+}
+
+footer .inner .f_top .btn_box .sns a {
+    width: 60px;
+    height: 60px;
+    background: #111;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer .inner .f_top .btn_box .sns i {
+    color: #fff;
+    font-size: 26px;
+}
+
+footer .f_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-top: 50px;
+}
+
+footer .f_bottom .left li {
+    margin-bottom: 8px;
+}
+
+footer .f_bottom .left .f_con1 {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+footer .f_bottom .right {
+    text-align: left;
+}
+
+footer .f_copy {
+
+    font-size: 13px;
+}

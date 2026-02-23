@@ -1,0 +1,791 @@
+@charset "utf-8";
+
+/* =========================
+   MAIN VISUAL
+   ========================= */
+.main_visual {
+    width: 100%;
+    height: 980px;
+
+}
+
+.main_visual .inner {
+    max-width: 1920px;
+    padding: 0;
+    height: 100%;
+}
+
+.main_visual .inner .swiper,
+.main_visual .inner .swiper .swiper_wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.main_visual .swiper_wrapper .slide1 {
+    width: 100%;
+    height: 100%;
+    background: url("../asset/img/main01.jpg") no-repeat center/cover;
+    position: relative;
+}
+
+.main_visual .slide1 .txt_box {
+    max-width: 1520px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(20px, 6vw, 200px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+
+}
+
+.main_visual .slide1 .txt_box h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 66px;
+    letter-spacing: -4px;
+}
+
+.main_visual .slide1 .txt_box>span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: normal;
+    letter-spacing: -2px;
+}
+
+.main_visual .slide1 .txt_box .more {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: -1px;
+    display: inline-flex;
+    padding-top: 4px;
+    padding-right: 10px;
+}
+
+.main_visual .slide1 .txt_box .more span {
+    line-height: normal;
+}
+
+.main_visual .swiper_wrapper .slide2 {
+    display: none;
+}
+
+.main_visual .swiper_wrapper .slide3 {
+    display: none;
+}
+
+.main_visual .swiper_wrapper .slide4 {
+    display: none;
+}
+
+/* =========================
+   BESTSELLER
+   ========================= */
+.bestseller {
+    width: 100%;
+    padding: 190px 0 220px;
+    /* 🔥 위 190 / 아래 220 */
+}
+
+.bestseller .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bestseller .inner h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 4px;
+}
+
+/* 서브 텍스트 */
+.bestseller .inner>span {
+    margin-top: 20px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.bestseller .inner ul {
+    margin-top: 50px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bestseller .inner ul li {
+    position: relative;
+    overflow: hidden;
+    transition: border-radius .3s ease, transform .3s ease;
+}
+
+.bestseller .inner ul li:hover {
+    border-radius: 80px;
+}
+
+.bestseller .inner ul li::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: 1;
+}
+
+.bestseller ul li .txt_box {
+    position: relative;
+    z-index: 2;
+}
+
+.bestseller .inner ul li:nth-child(1)::before {
+    background-image: url("../asset/img/best01.jpg");
+}
+
+.bestseller .inner ul li:nth-child(2)::before {
+    background-image: url("../asset/img/best02.jpg");
+}
+
+.bestseller .inner ul li:nth-child(3)::before {
+    background-image: url("../asset/img/best03.jpg");
+}
+
+.bestseller .inner ul li:nth-child(4)::before {
+    background-image: url("../asset/img/best04.jpg");
+}
+
+.bestseller .scene_con {
+    width: 320px;
+    height: 460px;
+    padding: 50px 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+}
+
+.bestseller .scene_con .txt_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.bestseller .scene_con .txt_box h3 {
+    width: 100%;
+    text-align: left;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: normal;
+    letter-spacing: -2px;
+}
+
+.bestseller .scene_con .txt_box p {
+    width: 100%;
+    text-align: left;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: -1px;
+}
+
+.bestseller .inner ul li:hover .txt_box h3,
+.bestseller .inner ul li:hover .txt_box p {
+    color: #fff;
+}
+
+/* =========================
+   qna
+   ========================= */
+.qna {
+    width: 100%;
+    padding: 140px 0px 120px 0px;
+    background: #fafafa;
+}
+
+.qna .tit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.qna .tit h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 4px;
+
+}
+
+.qna .tit span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.qna .tit_bottom {
+    padding-top: 30px;
+}
+
+.qna .tit_bottom ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* 버튼 사이 간격 (원하면 조절) */
+}
+
+.qna .tit_bottom a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 54px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+}
+
+.qna .qna_swiper .swiper-wrapper {
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.qna .qna_swiper .qna_card {
+    width: 280px;
+    height: 350px;
+    border-radius: 12px;
+    display: flex;
+    flex: 0 0 auto;
+    background: #ebebeb;
+}
+
+.qna .qna_swiper .qna_card a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 74px 50px 0;
+    box-sizing: border-box;
+}
+
+.qna .qna_swiper .qna_card a .con_top {
+    width: 100%;
+    height: 130px;
+    border-bottom: 2px solid #000;
+    display: flex;
+}
+
+.qna .qna_swiper .qna_card a .con_top .txt_box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.qna .qna_swiper .qna_card a .con_top em {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    /* semibold */
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: 0;
+    color: #666;
+}
+
+.qna .qna_swiper .qna_card a .con_top p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    /* medium */
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.qna .qna_swiper .qna_card a .con_bottom {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 0px 10px 0px;
+}
+
+
+
+/* =========================
+   CATEGORY
+   ========================= */
+.category {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.category .inner {
+    width: 100%;
+    max-width: 1880px;
+    height: 800px;
+    padding: 0 50px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+    gap: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.category .txt_box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.category .txt_box h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 4px;
+}
+
+.category .txt_box span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.category .con_box {
+    width: 100%;
+    position: relative;
+    height: clamp(320px, 28vw, 500px);
+}
+
+.category .con_box .con1,
+.category .con_box .con2,
+.category .con_box .con3 {
+    border-right: 8px solid #fff;
+}
+
+.category .bg_img {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+}
+
+.category .bg_img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+}
+
+.category .bg_img img.on {
+    opacity: 1;
+    z-index: 1;
+}
+
+.category .category_list {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.category .category_list>li {
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category .category_list>li>a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.category .category_list>li:hover h4 {
+    color: #fff;
+}
+
+.category .category_list h4 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 46px;
+    color: #000;
+}
+
+/* =========================
+   SNS SECTION
+   ========================= */
+.sns {
+    width: 100%;
+    height: auto;
+    background: #FAFAFA;
+}
+
+.sns .inner {
+    width: 100%;
+    height: 780px;
+    margin-top: 80px;
+    margin-bottom: 140px;
+    gap: 80px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.sns .txt_box {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* 요소 간 기본 간격 (필요시 조정) */
+}
+
+.sns .txt_box h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.25%;
+}
+
+.sns .txt_box p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0;
+    margin: 0;
+    opacity: 0.8;
+    /* 선택: 보조문구 느낌(원치 않으면 삭제) */
+}
+
+.sns .sns_btn {
+    padding: 20px 0;
+    /* 위 아래 20 */
+}
+
+.sns .sns_btn a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: normal;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 54px;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+}
+
+.sns .sns_btn a:hover {
+    background: #000;
+    color: #fff;
+}
+
+.sns .con_box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sns .sns_list {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.sns .sns_item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: nowrap;
+}
+
+.sns .sns_card {
+    width: 100%;
+    max-width: 380px;
+    flex: 1 1 380px;
+    aspect-ratio: 380 / 450;
+    /* height 고정 대신 비율로 반응형 */
+}
+
+.sns .stack {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sns .layer {
+    width: 280px;
+    height: 340px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sns .layer-img {
+    overflow: hidden;
+}
+
+.sns .layer-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.layer-text {
+    background: rgba(234, 234, 234, .65);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+    z-index: 2;
+}
+
+.sns_card:nth-child(odd) .layer-text {
+    transform: translate(-50%, -50%) rotate(-10deg);
+}
+
+.sns_card:nth-child(even) .layer-text {
+    transform: translate(-50%, -50%) rotate(10deg);
+}
+
+.layer-text h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+    line-height: normal;
+}
+
+.layer-text p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: .5px;
+    line-height: normal;
+}
+
+/* =========================
+   BRAND
+   ========================= */
+.brand {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+.brand .inner {
+    width: 100%;
+    height: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding-top: 160px;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.brand .txt_box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 24px;
+    text-align: center;
+}
+
+.brand .txt_box span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: 3.6px;
+}
+
+.brand .txt_box h2 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: normal;
+    letter-spacing: 0.1px;
+    margin: 0;
+}
+
+.brand .img_box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand .img_box ul {
+    display: flex;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.brand .img_box .con {
+    width: 360px;
+    height: 680px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.brand .con_top {
+    width: 100%;
+    height: calc(100% - 200px);
+    background: #ddd;
+}
+
+.brand .con_top img {
+    opacity: 0.7;
+}
+
+.brand .con_bottom {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    /* 왼쪽 위 정렬 */
+    justify-content: flex-start;
+    box-sizing: border-box;
+    /* padding 필요하면 여기서 추가 */
+}
+
+.brand .con_bottom h3 {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 50px;
+    line-height: 72px;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.brand .con_bottom span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    /* Regular */
+    font-size: 10px;
+    line-height: 16px;
+    letter-spacing: 2px;
+}
+
+.brand .con_bottom p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 27.2px;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.brand .more_box {
+    width: 100%;
+    height: auto;
+    /* 허그 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* 가운데 위쪽 정렬 */
+    justify-content: flex-start;
+    gap: 48px;
+}
+
+.brand .more_top,
+.brand .more_bottom {
+    width: 100%;
+    height: auto;
+    /* 허그 */
+}
+
+.brand .more_top {
+    text-align: center;
+}
+
+.brand .more_top p {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 26px;
+    letter-spacing: 0;
+    margin: 0;
+}
+
+.brand .more_bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.brand .more_bottom a {
+    text-decoration: none;
+    color: inherit;
+}
