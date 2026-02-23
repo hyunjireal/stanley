@@ -49,6 +49,20 @@ const customerSlide = new Swiper(".qna .swiper", {
   }
 });
 
+ const mainSwiper = new Swiper('.mainSwiper', {
+    loop: true,                // 추가: 무한 루프
+    speed: 900,                // 추가: 전환 속도
+    grabCursor: true,          // 추가: 마우스 올리면 손모양(드래그 힌트)
+    simulateTouch: true,       // 추가: PC에서도 드래그 슬라이드
+    touchRatio: 1,             // 추가: 드래그 감도 기본
+    resistanceRatio: 0.85,     // 추가: 드래그 저항감
+
+    autoplay: {                // 추가(선택): 자동 슬라이드
+      delay: 4500,
+      disableOnInteraction: false, // 드래그 후에도 autoplay 유지
+    },
+  });
+
 
 
 });
