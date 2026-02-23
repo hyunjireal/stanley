@@ -31,7 +31,8 @@ body {
 header {
     width: 100%;
     /* z-index: 999; */
-    position: relative; /* ㅊㄱ */
+    position: relative;
+    /* ㅊㄱ */
 }
 
 header.sc {
@@ -115,7 +116,6 @@ header .bottom .inner {
     z-index: 1001;
 }
 
-
 header .nav {
     position: relative;
     display: flex;
@@ -123,7 +123,87 @@ header .nav {
 
 header .bottom .right {
     display: flex;
-    gap: 16px;
+    align-items: center;
+}
+
+header .btn_search{
+  width: 40px;
+  height: 40px;
+  display: flex;              /* ✅ 아이콘 가운데 */
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  line-height: 1;             /* ✅ 폰트아이콘 줄높이 영향 제거 */
+}
+
+/* 폰트어썸 아이콘 크기 통일 */
+header .btn_search i{
+  font-size: 18px;            /* ✅ 햄버거와 밸런스 맞추는 값(원하면 조절) */
+  line-height: 1;
+}
+
+/* 햄버거도 같은 규격 유지(이미 40x40이라 OK) */
+header .ham{
+  width: 40px;
+  height: 40px;
+  display: flex;              /* ✅ 혹시라도 내부 기준 흔들리지 않게 */
+  align-items: center;
+  justify-content: center;
+}
+
+/* 햄버거 막대 크기/간격 미세 조정(아이콘과 밸런스) */
+header .ham ul{
+  width: 22px;                /* ✅ 기존 24px → 살짝 줄이면 search 아이콘과 레벨 맞음 */
+  height: 16px;               /* ✅ 기존 18px */
+}
+
+header .ham ul li{
+  height: 2px;                /* 그대로 OK */
+}
+
+/* =========================
+   HAMBURGER
+   ========================= */
+.ham {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.ham ul {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 18px;
+
+    display: flex;
+    /* ✅ 이거 꼭 있어야 gap 먹음 */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.ham ul li {
+    width: 100%;
+    height: 2px;
+    background: #111;
+    transition: .3s ease;
+}
+
+/* 메뉴 열렸을 때 햄버거 → X 변형 */
+header.open .ham ul li:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+header.open .ham ul li:nth-child(2) {
+    opacity: 0;
+}
+
+header.open .ham ul li:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* =========================
@@ -141,19 +221,24 @@ header .gnb {
     align-items: center;
 }
 
-header .gnb > li{
-    position: relative; /* ✅ 각 li를 sub의 기준으로 */
+header .gnb>li {
+    position: relative;
+    /* ✅ 각 li를 sub의 기준으로 */
 }
 
-header .gnb_dim{
-    display: none;              /* ✅ 기본은 숨김 */
-    position: fixed;            /* ✅ bottom 안에 있어도 화면 전체를 덮게 fixed 추천 */
+header .gnb_dim {
+    display: none;
+    /* ✅ 기본은 숨김 */
+    position: fixed;
+    /* ✅ bottom 안에 있어도 화면 전체를 덮게 fixed 추천 */
     left: 0;
-    top: var(--header-total-h); /* ✅ top+bottom 아래부터 딤이 깔리게 (헤더 위는 클릭 가능/불필요 딤 방지) */
+    top: var(--header-total-h);
+    /* ✅ top+bottom 아래부터 딤이 깔리게 (헤더 위는 클릭 가능/불필요 딤 방지) */
     width: 100%;
     height: calc(100vh - var(--header-total-h));
-    background: rgba(0,0,0,0.45);
-    z-index: 900;               /* ✅ bottom(1000)보다 아래, sub(예:1002)보다 아래로 */
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 900;
+    /* ✅ bottom(1000)보다 아래, sub(예:1002)보다 아래로 */
 }
 
 header .gnb_link {
@@ -162,54 +247,176 @@ header .gnb_link {
     gap: 10px;
     text-decoration: none;
     color: #111;
-      padding: 10px 0; 
+    padding: 10px 0;
 }
 
-header .sub {  
+header .sub {
     position: absolute;
-     width: 100%; 
-       min-width: 180px;   
+    width: auto;
+    min-width: 180px;
     left: 50%;
     top: calc(100% + 14px);
     padding: 30px 0px;
-    
+
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(0,0,0,0.08);
-    border-radius: 12px;
-    z-index: 1002; 
 
-     opacity: 0;                        /* 기본: 안 보임 */
-    visibility: hidden;                /* 기본: 클릭/포커스 안 됨 */
-    pointer-events: none;              /* 기본: 마우스 이벤트 차단 */
-    transform: translateY(8px);        /* 기본: 살짝 아래에서 올라오는 느낌 */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    z-index: 1002;
+
+    opacity: 0;
+    visibility: hidden;
+    /* 기본: 클릭/포커스 안 됨 */
+    pointer-events: none;
+    /* 기본: 마우스 이벤트 차단 */
+    transform:  translateX(-50%) translateY(8px);
+    /* 기본: 살짝 아래에서 올라오는 느낌 */
     transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
 }
 
 
-header .gnb_item{
+header .gnb_item {
     text-align: center;
-} 
+}
 
-header .gnb > li:hover > .sub {
+header .gnb>li:hover>.sub {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transform:translateX(-50%) translateY(0);
+    transform: translateX(-50%) translateY(0);
     transition: opacity .18s ease, transform .18s ease, visibility 0s;
 }
- 
-header.open .gnb_dim{
+
+header.open .gnb_dim {
     display: block;
 }
 
-header .gnb > li.open > .sub{
+header .gnb>li.open>.sub {
     display: block;
 }
+
+
+/* =========================
+   ALL MENU (FULL)
+   ========================= */
+header .all_menu {
+    position: fixed;
+    left: 0;
+    top: var(--header-total-h);
+    width: 100%;
+    height: calc(100vh - var(--header-total-h));
+    z-index: 3000;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+}
+
+header.open .all_menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+    transition: opacity .25s ease, transform .25s ease, visibility 0s;
+}
+
+header .all_menu_dim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+}
+
+header .all_menu_inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+header .all_menu_left {
+    flex: 1;
+    background: #111;
+    /* 임시 */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .all_menu_right {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header .all_menu_list a {
+    display: block;
+    color: #111;
+    text-decoration: none;
+}
+
+header .all_menu_right {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* ✅ 왼쪽 정렬이 더 고급스러움 */
+}
+
+header .all_menu_list {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    /* ✅ 메인 메뉴 그룹 간격 */
+}
+
+header .all_main {
+    display: inline-block;
+    font-size: 40px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #111;
+}
+
+/* 서브 목록 */
+header .all_sub {
+    margin-top: 16px;
+    /* ✅ 메인-서브 간격 */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* ✅ 서브 항목 간격 */
+}
+
+/* 서브 링크(작은 글씨) */
+header .all_sub a {
+    display: inline-block;
+    font-size: 16px;
+    /* ✅ 서브 작게 */
+    font-weight: 300;
+    text-decoration: none;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* =========================
+   SCROLL LOCK
+   ========================= */
+body.no-scroll {
+    overflow: hidden;
+}
+
 /* =========================
    FOOTER
    ========================= */
@@ -238,12 +445,12 @@ footer .inner .f_top .btn_box {
     gap: 20px;
 }
 
-footer .inner .f_top .btn_box .sns {
+footer .inner .f_top .btn_box .f_sns {
     display: flex;
     gap: 10px;
 }
 
-footer .inner .f_top .btn_box .sns a {
+footer .inner .f_top .btn_box .f_sns a {
     width: 60px;
     height: 60px;
     background: #111;
@@ -253,7 +460,7 @@ footer .inner .f_top .btn_box .sns a {
     justify-content: center;
 }
 
-footer .inner .f_top .btn_box .sns i {
+footer .inner .f_top .btn_box .f_sns i {
     color: #fff;
     font-size: 26px;
 }

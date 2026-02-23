@@ -11,7 +11,6 @@
     <link rel="shortcut icon" href="asset/img/favicon.ico" type="image/x-icon">
     <script src="https://kit.fontawesome.com/672e368b20.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
@@ -82,7 +81,7 @@
                                     Events<i class="fa-solid fa-angle-down"></i>
                                 </a>
                                 <ul class="sub">
-                                    <li><a href="#">진행중인  이벤트</a></li>
+                                    <li><a href="#">진행중인 이벤트</a></li>
                                     <li><a href="#">지난 이벤트</a></li>
                                 </ul><!-- //.sub -->
                             </li>
@@ -100,14 +99,78 @@
                     </nav>
 
                     <div class="right">
-                        <a href="#" class="btn_search"><i class="fa-solid fa-magnifying-glass"></i></a>
-                        <a href="#" class="btn_burger"><i class="fa-solid fa-bars"></i></a>
-                    </div><!-- //.right -->
+                        <a href="#" class="btn_search">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </a>
+
+                        <!-- ✅ 커스텀 햄버거 -->
+                        <div class="ham">
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div><!-- //.inner -->
 
                 <!-- ✅ 서브메뉴 열릴 때만 켜질 "딤 오버레이" (bottom 기준) -->
                 <div class="gnb_dim" aria-hidden="true"></div>
             </div><!-- //.bottom -->
+            <div class="all_menu" aria-hidden="true">
+                <div class="all_menu_inner">
+                    <div class="all_menu_left">
+                        <!-- 여기 비주얼/카피/이미지 넣고 싶으면 넣기 -->
+                        <p class="all_menu_copy">Everyday. Everywhere.</p>
+                    </div><!-- //.all_menu_left -->
+
+                    <div class="all_menu_right">
+                        <ul class="all_menu_list">
+
+                            <li class="all_item">
+                                <a href="#" class="all_main">
+                                    <h3>About Us</h3>
+                                </a>
+                                <ul class="all_sub">
+                                    <li><a href="#">브랜드 스토리</a></li>
+                                    <li><a href="#">지속 가능성</a></li>
+                                    <li><a href="#">주요 연혁</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="all_item">
+                                <a href="#" class="all_main">Brand</a>
+                                <ul class="all_sub">
+                                    <li><a href="#">텀블러</a></li>
+                                    <li><a href="#">보온병</a></li>
+                                    <li><a href="#">푸드 저장</a></li>
+                                    <li><a href="#">악세서리</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="all_item">
+                                <a href="#" class="all_main">Events</a>
+                                <ul class="all_sub">
+                                    <li><a href="#">진행중인 이벤트</a></li>
+                                    <li><a href="#">지난 이벤트</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="all_item">
+                                <a href="#" class="all_main">Contact</a>
+                                <ul class="all_sub">
+                                    <li><a href="#">고객센터</a></li>
+                                    <li><a href="#">매장 안내</a></li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div><!-- //.all_menu_inner -->
+
+                <!-- 바깥 클릭 닫기용 딤 -->
+                <div class="all_menu_dim" aria-hidden="true"></div>
+            </div>
         </header>
         <main>
             <section class="main_visual">
@@ -388,6 +451,7 @@
             <section class="sns">
                 <div class="inner">
                     <div class="txt_box">
+                        <span>Instagram</span>
                         <h2>스탠리 코리아 인스타그램을 팔로우하세요</h2>
                         <p>실사용 후기와 다양한 라이프스타일 컷을 모아봤어요</p>
                         <div class="sns_btn">
@@ -450,7 +514,7 @@
                 <div class="inner">
                     <div class="txt_box">
                         <span>Since 1913</span>
-                        <h2>시간이 흘러도 변하지 않는<br>가치를 만듭니다</h2>
+                        <h2>시간이 흘러도 변하지 않는 가치를 만듭니다</h2>
                     </div><!-- //.txt_box -->
                     <div class="img_box">
                         <ul>
@@ -461,7 +525,7 @@
                                 <div class="con_bottom">
                                     <h3>110+</h3>
                                     <span>Years of Heritage</span>
-                                    <p>1913년부터 이어온 진공 단열 기술과 신뢰. 한 세기가 넘는 시간 동안 STANLEY는 변하지 않는 품질을 지켜왔습니다.</p>
+                                    <p>1913년부터 이어온 진공 단열 기술과 신뢰.<br>한 세기가 넘는 시간 동안 STANLEY는 변하지 않는 품질을 지켜왔습니다.</p>
                                 </div><!-- //.con_bottom -->
                             </li>
                             <li class="con">
@@ -471,7 +535,7 @@
                                 <div class="con_bottom">
                                     <h3>평생</h3>
                                     <span>Lifetime Warranty</span>
-                                    <p>정상 사용 범위 내 평생 보증. 우리는 만든 제품에 대해 끝까지 책임집니다. 이것이 STANLEY의 약속입니다.</p>
+                                    <p>정상 사용 범위 내 평생 보증.<br>우리는 만든 제품에 대해 끝까지 책임집니다. 이것이 STANLEY의 약속입니다.</p>
                                 </div><!-- //.con_bottom -->
                             </li>
                             <li class="con">
@@ -481,14 +545,14 @@
                                 <div class="con_bottom">
                                     <h3>100%</h3>
                                     <span>Responsibility</span>
-                                    <p>오래 사용할 수 있도록 책임지는 브랜드 철학. 지속 가능한 미래를 위해 STANLEY는 모든 과정에서 책임을 다합니다.</p>
+                                    <p>오래 사용할 수 있도록 책임지는 브랜드 철학.<br>지속 가능한 미래를 위해 STANLEY는 모든 과정에서 책임을 다합니다.</p>
                                 </div><!-- //.con_bottom -->
                             </li>
                         </ul>
                     </div><!-- //.img_box -->
                     <div class="more_box">
                         <div class="more_top">
-                            <p>STANLEY는 단순한 제품이 아닌, 당신의 일상과 함께 시간을 견디는 동반자입니다.<br></p>
+                            <p>STANLEY는 단순한 제품이 아닌 당신의 일상과 함께 시간을 견디는 동반자입니다.<br></p>
                             <p>우리의 이야기를 더 깊이 알아보세요.</p>
                         </div>
                         <div class="more_bottom">
@@ -506,10 +570,10 @@
                         <div class="logo">STANLEY KOREA</div>
                     </div><!-- //logo_box -->
                     <div class="btn_box">
-                        <div class="sns">
+                        <div class="f_sns">
                             <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
                             <a href="#"><i class="fa-brands fa-square-instagram"></i></a>
-                        </div><!-- //.sns -->
+                        </div><!-- //.f_sns -->
                         <div class="page_top">
                             <a href="#">top<i class="fa-solid fa-arrow-up"></i></a>
                         </div><!-- //.page_top -->
