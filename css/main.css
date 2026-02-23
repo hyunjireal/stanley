@@ -263,14 +263,17 @@
     border: 1px solid #ddd;
     border-radius: 999px;
 }
-
+.qna .qna_swiper {
+  width: 100%;
+  overflow: hidden; /* 슬라이드가 밖으로 튀는 거 방지 */
+  padding-top: 40px; /* 원하는 여백 */
+}
 .qna .qna_swiper .swiper-wrapper {
     height: 450px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: flex-end;
-    gap: 40px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .qna .qna_swiper .qna_card {

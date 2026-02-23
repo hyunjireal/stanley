@@ -27,4 +27,28 @@ categorySection.addEventListener('mouseleave', () => {
   bgImages[0].classList.add('on');
 });
 
+  // QnA Marquee Swiper
+const customerSlide = new Swiper(".qna .swiper", {
+  loop: true,
+  slidesPerView: 'auto', //아이템 너비만큼 자연 흐름
+  spaceBetween: 30,
+  speed: 9000, //전체 트랙이 한번 도는 시간 (느리게=크게)
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: false, //마우스 올려도 안 멈추게
+  },
+  loopAdditionalSlides: 5, //루프 시 빈틈 방지
+  on: {
+    init: function () {
+      this.wrapperEl.style.transitionTimingFunction = 'linear';
+    },
+    slideChangeTransitionStart: function () {
+      this.wrapperEl.style.transitionTimingFunction = 'linear';
+    },
+  }
+});
+
+
+
 });
