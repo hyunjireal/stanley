@@ -28,29 +28,47 @@
 <body>
     <div class="wrap">
         <!-- 배경 베이스가 될 이미지 또는 비디오 자리 -->
-        <header>
+        <header class="header">
             <div class="top">
                 <div class="inner">
                     <ul>
-                        <li><a href="#">Stanley Korea Store<i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <li>
+                            <a href="#">
+                                Stanley Korea Store
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
                         </li>
-                        <li><a href="#">Korea<i class="fa-regular fa-flag"></i></a></li>
+                        <li>
+                            <a href="#">
+                                Korea
+                                <i class="fa-regular fa-flag"></i>
+                            </a>
+                        </li>
                     </ul>
                 </div><!-- //.inner -->
             </div><!-- //.top -->
+
             <div class="bottom">
                 <div class="inner">
-                    <h1>로고</h1>
+                    <h1><a href="#">로고</a></h1>
+
                     <nav class="nav">
                         <ul class="gnb">
-                            <li><a href="#" class="gnb_link">About Us<i class="fa-solid fa-angle-down"></i></a>
+                            <li class="gnb_item">
+                                <a href="#" class="gnb_link">
+                                    About Us<i class="fa-solid fa-angle-down"></i>
+                                </a>
                                 <ul class="sub">
                                     <li><a href="#">브랜드 스토리</a></li>
                                     <li><a href="#">지속 가능성</a></li>
                                     <li><a href="#">주요 연혁</a></li>
                                 </ul><!-- //.sub -->
                             </li>
-                            <li><a href="#" class="gnb_link">Brand<i class="fa-solid fa-angle-down"></i></a>
+
+                            <li class="gnb_item">
+                                <a href="#" class="gnb_link">
+                                    Brand<i class="fa-solid fa-angle-down"></i>
+                                </a>
                                 <ul class="sub">
                                     <li><a href="#">텀블러</a></li>
                                     <li><a href="#">보온병</a></li>
@@ -58,13 +76,21 @@
                                     <li><a href="#">악세서리</a></li>
                                 </ul><!-- //.sub -->
                             </li>
-                            <li><a href="#" class="gnb_link">Events<i class="fa-solid fa-angle-down"></i></a>
+
+                            <li class="gnb_item">
+                                <a href="#" class="gnb_link">
+                                    Events<i class="fa-solid fa-angle-down"></i>
+                                </a>
                                 <ul class="sub">
-                                    <li><a href="#">진행중인 이벤트</a></li>
+                                    <li><a href="#">진행중인  이벤트</a></li>
                                     <li><a href="#">지난 이벤트</a></li>
                                 </ul><!-- //.sub -->
                             </li>
-                            <li><a href="#" class="gnb_link">Contact<i class="fa-solid fa-angle-down"></i></a>
+
+                            <li class="gnb_item">
+                                <a href="#" class="gnb_link">
+                                    Contact<i class="fa-solid fa-angle-down"></i>
+                                </a>
                                 <ul class="sub">
                                     <li><a href="#">고객센터</a></li>
                                     <li><a href="#">매장 안내</a></li>
@@ -72,11 +98,15 @@
                             </li>
                         </ul><!-- //.gnb -->
                     </nav>
+
                     <div class="right">
                         <a href="#" class="btn_search"><i class="fa-solid fa-magnifying-glass"></i></a>
                         <a href="#" class="btn_burger"><i class="fa-solid fa-bars"></i></a>
                     </div><!-- //.right -->
                 </div><!-- //.inner -->
+
+                <!-- ✅ 서브메뉴 열릴 때만 켜질 "딤 오버레이" (bottom 기준) -->
+                <div class="gnb_dim" aria-hidden="true"></div>
             </div><!-- //.bottom -->
         </header>
         <main>

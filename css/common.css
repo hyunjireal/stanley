@@ -21,9 +21,6 @@ body {
     box-sizing: border-box;
 }
 
-
-
-
 .wrap {
     width: 100%;
 }
@@ -33,7 +30,8 @@ body {
    ========================= */
 header {
     width: 100%;
-    z-index: 999;
+    /* z-index: 999; */
+    position: relative; /* ㅊㄱ */
 }
 
 header.sc {
@@ -113,7 +111,10 @@ header .bottom .inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    z-index: 1001;
 }
+
 
 header .nav {
     position: relative;
@@ -140,18 +141,75 @@ header .gnb {
     align-items: center;
 }
 
+header .gnb > li{
+    position: relative; /* ✅ 각 li를 sub의 기준으로 */
+}
+
+header .gnb_dim{
+    display: none;              /* ✅ 기본은 숨김 */
+    position: fixed;            /* ✅ bottom 안에 있어도 화면 전체를 덮게 fixed 추천 */
+    left: 0;
+    top: var(--header-total-h); /* ✅ top+bottom 아래부터 딤이 깔리게 (헤더 위는 클릭 가능/불필요 딤 방지) */
+    width: 100%;
+    height: calc(100vh - var(--header-total-h));
+    background: rgba(0,0,0,0.45);
+    z-index: 900;               /* ✅ bottom(1000)보다 아래, sub(예:1002)보다 아래로 */
+}
+
 header .gnb_link {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: #111;
+      padding: 10px 0; 
 }
 
-header .sub {
-    display: none;
+header .sub {  
+    position: absolute;
+     width: 100%; 
+       min-width: 180px;   
+    left: 50%;
+    top: calc(100% + 14px);
+    padding: 30px 0px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    z-index: 1002; 
+
+     opacity: 0;                        /* 기본: 안 보임 */
+    visibility: hidden;                /* 기본: 클릭/포커스 안 됨 */
+    pointer-events: none;              /* 기본: 마우스 이벤트 차단 */
+    transform: translateY(8px);        /* 기본: 살짝 아래에서 올라오는 느낌 */
+    transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
 }
 
+
+header .gnb_item{
+    text-align: center;
+} 
+
+header .gnb > li:hover > .sub {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform:translateX(-50%) translateY(0);
+    transition: opacity .18s ease, transform .18s ease, visibility 0s;
+}
+ 
+header.open .gnb_dim{
+    display: block;
+}
+
+header .gnb > li.open > .sub{
+    display: block;
+}
 /* =========================
    FOOTER
    ========================= */
