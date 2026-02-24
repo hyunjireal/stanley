@@ -81,33 +81,6 @@ window.addEventListener('scroll', () => {
   }, { passive: true });
 
   /* =========================
-   MAIN VISUAL SHRINK OUT (scroll progress)
-   ========================= */
-const mvWrap = document.querySelector('.main_visual_wrap');
-const mv = document.querySelector('.main_visual');
-
-function clamp01(v){ return Math.max(0, Math.min(1, v)); }
-
-function updateMainVisualProgress(){
-  if (!mvWrap || !mv) return;
-
-  const rect = mvWrap.getBoundingClientRect();
-  const total = mvWrap.offsetHeight - mv.offsetHeight; // 래퍼 스크롤 가능한 길이
-  if (total <= 0) {
-    mv.style.setProperty('--mvP', 0);
-    return;
-  }
-
-  // rect.top이 0 → 래퍼 시작(=mvP 0), rect.top이 -total → 끝(=mvP 1)
-  const progress = clamp01((-rect.top) / total);
-  mv.style.setProperty('--mvP', progress);
-}
-
-updateMainVisualProgress();
-window.addEventListener('scroll', updateMainVisualProgress, { passive: true });
-window.addEventListener('resize', updateMainVisualProgress);
-
-  /* =========================
      FULL MENU TOGGLE
      ========================= */
 

@@ -5,7 +5,7 @@
    ========================= */
 
 .main_visual_wrap {
-    height: calc(980px + 1400px);
+    height: calc(980px + 800px);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -158,7 +158,6 @@
 /* =========================
    INTRO: BG FADE IN (배경만)
    ========================= */
-
 .main_visual .swiper-slide {
     background-image: none;
 }
@@ -228,9 +227,93 @@
     justify-content: flex-start;
 }
 
+
+.scroll_hint {
+    position: absolute;
+    left: 50%;
+    bottom: 8vh;
+    transform: translateX(-50%);
+    z-index: 5;
+    /* 텍스트(z=2)보다 위로 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    pointer-events: none;
+    /* 클릭 방해 X */
+    opacity: .85;
+}
+
+.scroll_hint .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(221, 221, 221, .9);
+}
+
+.scroll_hint .mouse {
+    width: 22px;
+    height: 34px;
+    border: 1px solid rgba(221, 221, 221, .8);
+    border-radius: 999px;
+    position: relative;
+}
+
+.scroll_hint .mouse::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    transform: translateX(-50%);
+    background: rgba(221, 221, 221, .9);
+    animation: wheel 1.2s ease-in-out infinite;
+}
+
+@keyframes wheel {
+    0% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-50%) translateY(14px);
+        opacity: 0;
+    }
+}
+
 /* =========================
    BESTSELLER
    ========================= */
+
+/* =========================
+   BESTSELLER SCROLL-IN (섹션 전체)
+   ========================= */
+.bestseller {
+    --bsO: 0;
+    --bsY: 60px;
+    will-change: transform, opacity;
+
+    opacity: var(--bsO);
+    transform: translateY(var(--bsY));
+}
+
+/* 완전히 보일 때 더 또렷하게 */
+.bestseller.is-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .bestseller {
     width: 100%;
     padding: 50px 0 220px;
@@ -324,7 +407,6 @@
     justify-content: center;
     gap: 10px;
 }
-
 
 .bestseller .scene_con .txt_box h3 {
     width: 100%;
