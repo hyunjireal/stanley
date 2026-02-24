@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* catergory section js */
 const categoryItems = document.querySelectorAll('.category_list > li');
 const bgImages = document.querySelectorAll('.bg_img img');
 
@@ -27,7 +29,7 @@ categorySection.addEventListener('mouseleave', () => {
   bgImages[0].classList.add('on');
 });
 
-  // QnA Marquee Swiper
+/* qna marquee swiper */
 const customerSlide = new Swiper(".qna .swiper", {
   loop: true,
   slidesPerView: 'auto', //아이템 너비만큼 자연 흐름
@@ -73,20 +75,6 @@ const mv = document.querySelector('.main_visual');
 
 function clamp01(v){ return Math.max(0, Math.min(1, v)); }
 
-function updateMainVisualProgress(){
-  if (!mvWrap || !mv) return;
-
-  const rect = mvWrap.getBoundingClientRect();
-  const total = mvWrap.offsetHeight - mv.offsetHeight; // 래퍼 스크롤 가능한 길이
-  if (total <= 0) {
-    mv.style.setProperty('--mvP', 0);
-    return;
-  }
-
-  // rect.top이 0 → 래퍼 시작(=mvP 0), rect.top이 -total → 끝(=mvP 1)
-  const progress = clamp01((-rect.top) / total);
-  mv.style.setProperty('--mvP', progress);
-}
 
 updateMainVisualProgress();
 window.addEventListener('scroll', updateMainVisualProgress, { passive: true });
@@ -105,43 +93,56 @@ function updateMainVisualProgress(){
   const hint = mv.querySelector('.scroll_hint');
   if (hint) hint.style.opacity = (progress < 0.08) ? '0.85' : '0';
 }
+
 /* =========================
-   BESTSELLER IN + OUT (scroll progress)
+   BESTSELLER ENTER ONLY (no disappear on scroll up)
    ========================= */
-const best = document.querySelector('.bestseller');
+const bestsellerSection = document.querySelector('.bestseller');
 
-function updateBestsellerProgress() {
-  if (!best) return;
+function handleBestsellerEnterOnly() {
+  if (!bestsellerSection) return;
 
-  const rect = best.getBoundingClientRect();
+  const rect = bestsellerSection.getBoundingClientRect();
   const vh = window.innerHeight;
 
-  // ✅ 등장(Enter): 섹션 top이 화면 85% 지점에 닿으면 시작 → 35% 지점이면 완료
-  const inStart = vh * 0.85;
-  const inEnd   = vh * 0.35;
-  const pIn = clamp01((inStart - rect.top) / (inStart - inEnd));
+  const startPoint = vh * 0.85;
+  const endPoint   = vh * 0.35;
 
-  // ✅ 퇴장(Exit): 섹션 bottom이 화면 15% 지점에 닿으면 시작 → -15% 지점이면 완료(위로 빠짐)
-  const outStart = vh * 0.15;
-  const outEnd   = -vh * 0.15;
-  const pOut = clamp01((rect.bottom - outEnd) / (outStart - outEnd));
-  // pOut: 1(아직 충분히 화면 안) → 0(완전히 위로 지나감)
+  const progress = clamp01((startPoint - rect.top) / (startPoint - endPoint));
 
-  // ✅ 최종 opacity: 들어올 때도, 나갈 때도 둘 다 자연스럽게
-  const o = Math.min(pIn, pOut);
-
-  // ✅ Y 이동: 들어올 땐 +60 → 0, 나갈 땐 0 → -60
-  const enterY = (1 - pIn) * 60;      // 60 -> 0
-  const exitY  = -(1 - pOut) * 60;    // 0  -> -60
-  const y = enterY + exitY;
-
-  best.style.setProperty('--bsO', o);
-  best.style.setProperty('--bsY', `${y}px`);
+  bestsellerSection.style.setProperty('--bsO', progress);
+  bestsellerSection.style.setProperty('--bsY', `${(1 - progress) * 60}px`);
 }
 
-updateBestsellerProgress();
-window.addEventListener('scroll', updateBestsellerProgress, { passive: true });
-window.addEventListener('resize', updateBestsellerProgress);
+handleBestsellerEnterOnly();
+window.addEventListener('scroll', handleBestsellerEnterOnly, { passive: true });
+window.addEventListener('resize', handleBestsellerEnterOnly);
 
+/* =========================
+   QNA ENTER ONLY (no disappear on scroll up)
+   ========================= */
+const qnaSection = document.querySelector('.qna');
 
+function handleQnaEnterOnly(){
+  if (!qnaSection) return;
+
+  const rect = qnaSection.getBoundingClientRect();
+  const vh = window.innerHeight;
+
+  // 아래에서 등장: top이 85% 지점 닿으면 시작 → 35%에서 완료
+  const startPoint = vh * 0.85;
+  const endPoint   = vh * 0.35;
+
+  const progress = clamp01((startPoint - rect.top) / (startPoint - endPoint));
+
+  // 섹션 자체 페이드
+  qnaSection.style.setProperty('--qnaO', progress);
+
+  // 오버레이는 등장할수록 사라짐(어둠 → 밝음)
+  qnaSection.style.setProperty('--qnaDim', (1 - progress) * 0.6);
+}
+
+handleQnaEnterOnly();
+window.addEventListener('scroll', handleQnaEnterOnly, { passive: true });
+window.addEventListener('resize', handleQnaEnterOnly);
 });

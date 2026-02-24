@@ -426,11 +426,112 @@ header .all_menu_left {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    /* 스윕 잘리게 */
+    color: #fff;
+
+
+    background: url("../asset/img/metal-dark.jpg") center/cover no-repeat;
+
+}
+
+header .all_menu_copy {
+    position: relative;
+    z-index: 2;
+}
+
+/* 스윕 레이어 */
+header .all_menu_visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+
+    /* 얇은 빛이 지나가는 느낌 */
+    background: linear-gradient(110deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.06) 42%,
+            rgba(255, 255, 255, 0.12) 50%,
+            rgba(255, 255, 255, 0.06) 58%,
+            transparent 100%);
+
+    transform: translateX(-120%);
+}
+
+/* 메뉴 열릴 때 1회 실행 */
+header.open .all_menu_visual::after {
+    opacity: 1;
+    animation: allMenuSweep 900ms ease-out 1;
+}
+
+@keyframes allMenuSweep {
+    0% {
+        transform: translateX(-120%);
+    }
+
+    100% {
+        transform: translateX(120%);
+    }
+}
+
+/* =========================
+   ALL MENU - LEFT VISUAL COPY
+   ========================= */
+
+header .all_menu_visual {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-top: 500px;
+    justify-content: flex-start;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+header .all_menu_visual .eyebrow {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 12px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: .75;
+    margin-bottom: 14px;
+    font-weight: 300;
+}
+
+header .all_menu_visual h2 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(44px, 4vw, 72px);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    line-height: 1.05;
+    margin-bottom: 18px;
+}
+
+header .all_menu_visual span {
+    display: block;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.6;
+    letter-spacing: 2px;
+    opacity: .9;
+}
+
+/* ✅ 텍스트가 배경에 묻힐 때 대비 살짝 올리기 */
+header .all_menu_visual {
+    text-shadow: 0 2px 18px rgba(0, 0, 0, .55);
 }
 
 header .all_menu_right {
     flex: 1;
-
+    filter: blur(.5);
     display: flex;
     align-items: center;
     justify-content: center;

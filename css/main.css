@@ -72,14 +72,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 38px;
+    gap: 10px;
 }
 
 .main_visual .swiper-slide .txt_box h2 {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 58px;
-    letter-spacing: -2px;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 600;
+    font-size: 60px;
+    letter-spacing: 1px;
     color: #ddd;
 }
 
@@ -90,6 +90,8 @@
     line-height: normal;
     letter-spacing: 1px;
     color: #ddd;
+    padding-bottom: 26px;
+
 }
 
 .main_visual .swiper-slide .txt_box .more {
@@ -302,10 +304,12 @@
 .bestseller {
     --bsO: 0;
     --bsY: 60px;
-    will-change: transform, opacity;
 
     opacity: var(--bsO);
     transform: translateY(var(--bsY));
+
+    transition: opacity .2s linear, transform .2s linear;
+    will-change: transform, opacity;
 }
 
 /* 완전히 보일 때 더 또렷하게 */
@@ -335,8 +339,9 @@
 .bestseller .inner>span {
     margin-top: 20px;
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
+    padding-bottom: 40px;
 }
 
 .bestseller .inner ul {
@@ -350,10 +355,14 @@
     position: relative;
     overflow: hidden;
     transition: border-radius .3s ease, transform .3s ease;
+    box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.3);
+    border-radius: 80px;
+
 }
 
 .bestseller .inner ul li:hover {
-    border-radius: 80px;
+    transform: translateY(-8px);
+    box-shadow: 25px 25px 50px rgba(0, 0, 0, 0.12);
 }
 
 .bestseller .inner ul li::before {
@@ -411,18 +420,18 @@
 .bestseller .scene_con .txt_box h3 {
     width: 100%;
     text-align: left;
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 600;
+    font-family: "Cormorant Garamond", serif;
+    font-weight: 500;
     font-size: 50px;
     line-height: normal;
-    letter-spacing: -2px;
+    letter-spacing: 1px;
 }
 
 .bestseller .scene_con .txt_box p {
     width: 100%;
     text-align: left;
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     font-size: 16px;
     line-height: normal;
     letter-spacing: -1px;
@@ -440,6 +449,38 @@
     width: 100%;
     padding: 140px 0px 120px 0px;
     background: #fafafa;
+    position: relative;
+    overflow: hidden;
+
+    /* JS가 바꿀 값 */
+    --qnaO: 0;
+    /* 섹션 등장/퇴장(0~1) */
+    --qnaDim: 0.6;
+    /* 오버레이 어둡기(0~1) */
+
+    /* ✅ 핵심: 섹션 자체가 등장/퇴장 */
+    opacity: var(--qnaO);
+    transform: translateY(calc((1 - var(--qnaO)) * 24px));
+    transition: opacity .2s linear, transform .2s linear;
+    will-change: opacity, transform;
+}
+
+.qna::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+
+    /* 너무 ‘검정 필터’처럼 느껴지면 이 값 낮춰 */
+    background: rgba(0, 0, 0, 0.35);
+    opacity: var(--qnaDim);
+    transition: opacity .2s linear;
+}
+
+.qna>* {
+    position: relative;
+    z-index: 3
 }
 
 .qna .tit {
@@ -459,7 +500,7 @@
 
 .qna .tit span {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     margin-top: 20px;
 }
@@ -498,9 +539,7 @@
 .qna .qna_swiper {
     width: 100%;
     overflow: hidden;
-    /* 슬라이드가 밖으로 튀는 거 방지 */
-    padding-top: 40px;
-    /* 원하는 여백 */
+    padding-top: 20px;
 }
 
 .qna .qna_swiper .swiper-wrapper {
@@ -555,9 +594,9 @@
 
 .qna .qna_swiper .qna_card a .con_top p {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
+    font-weight: 300;
     /* medium */
-    font-size: 18px;
+    font-size: 14px;
     line-height: normal;
     letter-spacing: 0;
 }
@@ -582,7 +621,7 @@
 
 .category .inner {
     width: 100%;
-    max-width: 1880px;
+    max-width: 1560px;
     height: 800px;
     padding: 0 50px;
     margin-bottom: 160px;
@@ -610,7 +649,7 @@
 
 .category .txt_box span {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 16px;
     margin-top: 20px;
 }
@@ -624,7 +663,7 @@
 .category .con_box .con1,
 .category .con_box .con2,
 .category .con_box .con3 {
-    border-right: 8px solid #fff;
+    border-right: 4px solid #fff;
 }
 
 .category .bg_img {
@@ -685,10 +724,10 @@
 }
 
 .category .category_list h4 {
-    font-family: "Noto Sans KR", sans-serif;
+    font-family: "Cormorant Garamond", serif;
     font-weight: 600;
-    font-size: 46px;
-    color: #000;
+    font-size: 56px;
+    color: #292727;
 }
 
 /* =========================
