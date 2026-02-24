@@ -145,4 +145,40 @@ function handleQnaEnterOnly(){
 handleQnaEnterOnly();
 window.addEventListener('scroll', handleQnaEnterOnly, { passive: true });
 window.addEventListener('resize', handleQnaEnterOnly);
+
+ /* =========================
+     SNS ENTER ONLY (drop-bounce once)
+     ========================= */
+  const snsSection = document.querySelector('.sns');
+  if (snsSection) {
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        snsSection.classList.add('is-in');
+        observer.unobserve(entry.target);
+      });
+    }, {
+      threshold: 0,
+      rootMargin: "-10% 0px -90% 0px"
+    });
+
+    io.observe(snsSection);
+  }
+
+  /* =========================
+     BRAND reveal (필수!)
+     ========================= */
+  const brandSection = document.querySelector('.brand');
+  if (brandSection) {
+    const brandObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        brandSection.classList.add('show');
+        // 한 번만이면 아래 줄 유지 / 반복이면 제거
+        brandObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.3 });
+
+    brandObserver.observe(brandSection);
+  }
 });
