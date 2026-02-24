@@ -78,7 +78,7 @@
 .main_visual .swiper-slide .txt_box h2 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 600;
-    font-size: 60px;
+    font-size: 80px;
     letter-spacing: 1px;
     color: #ddd;
 }
@@ -111,14 +111,14 @@
 
 .main_visual .slide1 {
     background-image: url("../asset/img/main01.jpg");
-    --txt-left: 5%;
+    --txt-left: 0%;
     --txt-top: -20%;
 
 }
 
 .main_visual .slide2 {
     background-image: url("../asset/img/main02.jpg");
-    --txt-left: 28%;
+    --txt-left: 26%;
     /* [추가] 550 / 1920 * 100 */
     --txt-top: 60%;
     /* [추가] 600 / 980  * 100 */
@@ -128,7 +128,7 @@
     background-image: url("../asset/img/main03.jpg");
     --txt-left: 67%;
     /* [추가] 1300 / 1920 * 100 */
-    --txt-top: 4%;
+    --txt-top: 0%;
     /* [추가] 40   / 980  * 100 */
 }
 
@@ -136,7 +136,7 @@
     background-image: url("../asset/img/main04.jpg");
     --txt-left: 4%;
     /* [추가] 100  / 1920 * 100 */
-    --txt-top: -20%;
+    --txt-top: -26%;
     /* [추가] -200 / 980  * 100 */
 }
 
@@ -516,25 +516,27 @@
     /* 버튼 사이 간격 (원하면 조절) */
 }
 
-.qna .tit_bottom a:hover {
-    background: #000;
-    color: #fff;
-}
-
 .qna .tit_bottom a {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 14px;
     line-height: normal;
     letter-spacing: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    height: 54px;
+    width: 120px;
+    height: 44px;
     border: 1px solid #ddd;
     border-radius: 999px;
 }
+
+.qna .tit_bottom a:hover {
+    background: #000;
+    color: #fff;
+    border: 1px solid #ddd;
+}
+
 
 .qna .qna_swiper {
     width: 100%;
@@ -558,6 +560,7 @@
     display: flex;
     flex: 0 0 auto;
     background: #ebebeb;
+    box-shadow: 5px 0px 6px rgba(0, 0, 0, 0.08);
 }
 
 .qna .qna_swiper .qna_card a {
@@ -571,7 +574,7 @@
 
 .qna .qna_swiper .qna_card a .con_top {
     width: 100%;
-    height: 130px;
+    height: 120px;
     border-bottom: 2px solid #000;
     display: flex;
 }
@@ -594,8 +597,7 @@
 
 .qna .qna_swiper .qna_card a .con_top p {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 300;
-    /* medium */
+    font-weight: 400;
     font-size: 14px;
     line-height: normal;
     letter-spacing: 0;
@@ -606,7 +608,7 @@
     height: 100px;
     display: flex;
     justify-content: flex-end;
-    padding: 30px 0px 10px 0px;
+    padding: 20px 0px 10px 0px;
 }
 
 /* =========================
@@ -799,15 +801,15 @@
 
 .sns .sns_btn a {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 600;
-    font-size: 18px;
+    font-weight: 500;
+    font-size: 14px;
     line-height: normal;
     letter-spacing: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
-    height: 54px;
+    width: 120px;
+    height: 44px;
     border: 1px solid #ddd;
     border-radius: 999px;
 }
@@ -842,6 +844,13 @@
     max-width: 380px;
     flex: 1 1 380px;
     aspect-ratio: 380 / 450;
+    /* 
+    position: relative;
+    z-index: 0; */
+}
+
+.sns .sns_card:hover {
+    z-index: 10;
 }
 
 .sns .stack {
@@ -857,10 +866,13 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    transition: opacity .25s ease, transform .35s ease;
+    will-change: transform, opacity;
 }
 
 .sns .layer-img {
     overflow: hidden;
+    z-index: 2;
 }
 
 .sns .layer-img img {
@@ -870,7 +882,7 @@
     display: block;
 }
 
-.layer-text {
+.sns .layer-text {
     background: rgba(234, 234, 234, .65);
     display: flex;
     flex-direction: column;
@@ -878,18 +890,40 @@
     justify-content: center;
     text-align: center;
     gap: 10px;
-    z-index: 2;
+    z-index: 1;
+    opacity: 0;
+    pointer-events: none;
 }
 
-.sns_card:nth-child(odd) .layer-text {
-    transform: translate(-50%, -50%) rotate(-10deg);
+.sns .sns_card:nth-child(odd) .layer {
+    transform: translate(-50%, -50%) rotate(-5deg);
 }
 
-.sns_card:nth-child(even) .layer-text {
-    transform: translate(-50%, -50%) rotate(10deg);
+.sns .sns_card:nth-child(even) .layer {
+    transform: translate(-50%, -50%) rotate(5deg);
 }
 
-.layer-text h2 {
+.sns .sns_card:hover .layer {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.sns .sns_card:hover .layer-text {
+    opacity: 1;
+    z-index: 3;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.02);
+}
+
+.sns .sns_card:hover .layer-img {
+    z-index: 1;
+    /* ➕추가: 호버 시 이미지를 뒤로 */
+    opacity: .45;
+    /* ➕추가: 뒤로 빠지는 느낌(원하면 0.3~0.6 조절) */
+    transform: translate(-50%, -50%) rotate(0deg) scale(0.98);
+    /* ➕추가: 살짝 눌리는 느낌 */
+}
+
+.sns .layer-text h2 {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
     font-size: 26px;
@@ -897,7 +931,7 @@
     line-height: normal;
 }
 
-.layer-text p {
+.sns .layer-text p {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
     font-size: 14px;
