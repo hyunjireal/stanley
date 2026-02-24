@@ -114,10 +114,6 @@ function handleBestsellerEnterOnly() {
   bestsellerSection.style.setProperty('--bsY', `${(1 - progress) * 60}px`);
 }
 
-handleBestsellerEnterOnly();
-window.addEventListener('scroll', handleBestsellerEnterOnly, { passive: true });
-window.addEventListener('resize', handleBestsellerEnterOnly);
-
 /* =========================
    QNA ENTER ONLY (no disappear on scroll up)
    ========================= */
@@ -142,10 +138,55 @@ function handleQnaEnterOnly(){
   qnaSection.style.setProperty('--qnaDim', (1 - progress) * 0.6);
 }
 
-handleQnaEnterOnly();
-window.addEventListener('scroll', handleQnaEnterOnly, { passive: true });
-window.addEventListener('resize', handleQnaEnterOnly);
+/* =========================
+   BESTSELLER + QNA reveal (IO)
+   ========================= */
+function addRevealIO(selector, options){
+  const el = document.querySelector(selector);
+  if(!el) return;
 
+  const io = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return;
+      el.classList.add('is-in');
+      observer.unobserve(entry.target); // 한 번만
+    });
+  }, options);
+
+  io.observe(el);
+}
+
+/* bestseller: 조금 일찍 뜨게 */
+addRevealIO('.bestseller', {
+  threshold: 0,
+  rootMargin: "0px 0px -60% 0px"
+});
+
+/* qna: 조금 늦게(또는 동일하게) */
+addRevealIO('.qna', {
+  threshold: 0,
+  rootMargin: "0px 0px -55% 0px"
+});
+
+
+/* =========================
+   CATEGORY title fade-in (enter)
+   ========================= */
+const categorySection2 = document.querySelector('.category');
+if (categorySection2) {
+  const ioCategory = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      categorySection2.classList.add('is-in');
+      observer.unobserve(entry.target); // 한 번만
+    });
+  }, {
+    threshold: 0,
+    rootMargin: "0px 0px -60% 0px"
+  });
+
+  ioCategory.observe(categorySection2);
+}
  /* =========================
      SNS ENTER ONLY (drop-bounce once)
      ========================= */

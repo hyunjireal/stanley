@@ -3,7 +3,6 @@
 /* =========================
    MAIN VISUAL
    ========================= */
-
 .main_visual_wrap {
     height: calc(980px + 800px);
 }
@@ -31,7 +30,6 @@
 
     opacity: calc(1 - (var(--mvOut) * 1));
     filter: blur(calc(var(--mvP) * 2px));
-    /* 선택: 아주 미세 blur (싫으면 줄 삭제) */
     transition: transform 0.05s linear, opacity 0.05s linear, filter 0.05s linear;
     /* 스크롤 반응 부드럽게 */
     will-change: transform, opacity, filter;
@@ -91,7 +89,6 @@
     letter-spacing: 1px;
     color: #ddd;
     padding-bottom: 26px;
-
 }
 
 .main_visual .swiper-slide .txt_box .more {
@@ -113,31 +110,24 @@
     background-image: url("../asset/img/main01.jpg");
     --txt-left: 0%;
     --txt-top: -20%;
-
 }
 
 .main_visual .slide2 {
     background-image: url("../asset/img/main02.jpg");
     --txt-left: 26%;
-    /* [추가] 550 / 1920 * 100 */
     --txt-top: 60%;
-    /* [추가] 600 / 980  * 100 */
 }
 
 .main_visual .slide3 {
     background-image: url("../asset/img/main03.jpg");
     --txt-left: 67%;
-    /* [추가] 1300 / 1920 * 100 */
     --txt-top: 0%;
-    /* [추가] 40   / 980  * 100 */
 }
 
 .main_visual .slide4 {
     background-image: url("../asset/img/main04.jpg");
     --txt-left: 4%;
-    /* [추가] 100  / 1920 * 100 */
     --txt-top: -26%;
-    /* [추가] -200 / 980  * 100 */
 }
 
 .main_visual .swiper-slide {
@@ -172,7 +162,6 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
     opacity: 0;
     transition: opacity 2.0s ease-out;
     will-change: opacity;
@@ -195,10 +184,6 @@
 }
 
 .main_visual .swiper-slide-active::after {
-    opacity: 1;
-}
-
-.main_visual.intro-bg .swiper-slide-active::after {
     opacity: 1;
 }
 
@@ -230,48 +215,6 @@
 }
 
 
-.scroll_hint {
-    position: absolute;
-    left: 50%;
-    bottom: 8vh;
-    transform: translateX(-50%);
-    z-index: 5;
-    /* 텍스트(z=2)보다 위로 */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    pointer-events: none;
-    /* 클릭 방해 X */
-    opacity: .85;
-}
-
-.scroll_hint .label {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: rgba(221, 221, 221, .9);
-}
-
-.scroll_hint .mouse {
-    width: 22px;
-    height: 34px;
-    border: 1px solid rgba(221, 221, 221, .8);
-    border-radius: 999px;
-    position: relative;
-}
-
-.scroll_hint .mouse::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 8px;
-    width: 4px;
-    height: 4px;
-    border-radius: 999px;
-    transform: translateX(-50%);
-    background: rgba(221, 221, 221, .9);
-    animation: wheel 1.2s ease-in-out infinite;
-}
 
 @keyframes wheel {
     0% {
@@ -302,13 +245,9 @@
    BESTSELLER SCROLL-IN (섹션 전체)
    ========================= */
 .bestseller {
-    --bsO: 0;
-    --bsY: 60px;
-
-    opacity: var(--bsO);
-    transform: translateY(var(--bsY));
-
-    transition: opacity .2s linear, transform .2s linear;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
     will-change: transform, opacity;
 }
 
@@ -350,6 +289,33 @@
     width: 100%;
     justify-content: space-between;
 }
+
+.bestseller .inner>h2,
+.bestseller .inner>span,
+.bestseller .inner ul {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.bestseller.is-in .inner>h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0ms;
+}
+
+.bestseller.is-in .inner>span {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 80ms;
+}
+
+.bestseller.is-in .inner ul {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 160ms;
+}
+
 
 .bestseller .inner ul li {
     position: relative;
@@ -451,32 +417,18 @@
     background: #fafafa;
     position: relative;
     overflow: hidden;
-
-    /* JS가 바꿀 값 */
-    --qnaO: 0;
-    /* 섹션 등장/퇴장(0~1) */
-    --qnaDim: 0.6;
-    /* 오버레이 어둡기(0~1) */
-
-    /* ✅ 핵심: 섹션 자체가 등장/퇴장 */
-    opacity: var(--qnaO);
-    transform: translateY(calc((1 - var(--qnaO)) * 24px));
-    transition: opacity .2s linear, transform .2s linear;
-    will-change: opacity, transform;
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+    will-change: transform, opacity;
 }
 
-.qna::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
-
-    /* 너무 ‘검정 필터’처럼 느껴지면 이 값 낮춰 */
-    background: rgba(0, 0, 0, 0.35);
-    opacity: var(--qnaDim);
-    transition: opacity .2s linear;
+/* 섹션 들어오면 */
+.qna.is-in {
+    opacity: 1;
+    transform: translateY(0);
 }
+
 
 .qna>* {
     position: relative;
@@ -640,7 +592,17 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .7s ease, transform .7s ease;
+    will-change: transform, opacity;
 }
+
+.category.is-in .txt_box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .category .txt_box h2 {
     font-family: "Noto Sans KR", sans-serif;
@@ -767,6 +729,15 @@
     justify-content: center;
     gap: 20px;
     /* 요소 간 기본 간격 (필요시 조정) */
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity .7s ease, transform .7s ease;
+    will-change: transform, opacity;
+}
+
+.sns.is-in .txt_box {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .sns .txt_box span {
@@ -955,23 +926,25 @@
 .sns.is-in .sns_card .stack {
     opacity: 1;
     animation: snsDropBounce 0.9s cubic-bezier(.2, .8, .2, 1) both;
+    animation-delay: 180ms;
+    /* 타이틀 먼저 보이고 카드 시작 */
 }
 
 /* 3) 카드별로 살짝 순차 등장(선택) */
 .sns.is-in .sns_card:nth-child(1) .stack {
-    animation-delay: 0ms;
-}
-
-.sns.is-in .sns_card:nth-child(2) .stack {
-    animation-delay: 90ms;
-}
-
-.sns.is-in .sns_card:nth-child(3) .stack {
     animation-delay: 180ms;
 }
 
-.sns.is-in .sns_card:nth-child(4) .stack {
+.sns.is-in .sns_card:nth-child(2) .stack {
     animation-delay: 270ms;
+}
+
+.sns.is-in .sns_card:nth-child(3) .stack {
+    animation-delay: 360ms;
+}
+
+.sns.is-in .sns_card:nth-child(4) .stack {
+    animation-delay: 450ms;
 }
 
 /* 4) 2~3번 통통 튀는 키프레임 */
