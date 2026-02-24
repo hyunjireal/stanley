@@ -3,10 +3,38 @@
 /* =========================
    MAIN VISUAL
    ========================= */
+
+.main_visual_wrap {
+    height: calc(980px + 1400px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .main_visual {
+        transform: none;
+        opacity: 1;
+        filter: none;
+        transition: none;
+    }
+}
+
 .main_visual {
+    position: sticky;
+    top: 0;
     width: 100%;
     height: 980px;
---main_visual_gutter: clamp(20px, 6vw, 200px);
+    --main_visual_gutter: clamp(20px, 6vw, 200px);
+    overflow: hidden;
+    --mvOutRaw: calc((var(--mvP) - 0.5) * 2);
+    --mvOut: clamp(0, var(--mvOutRaw), 1);
+
+    transform: translateY(calc(var(--mvOut) * -120px)) scale(calc(1 - (var(--mvOut) * 0.35)));
+
+    opacity: calc(1 - (var(--mvOut) * 1));
+    filter: blur(calc(var(--mvP) * 2px));
+    /* 선택: 아주 미세 blur (싫으면 줄 삭제) */
+    transition: transform 0.05s linear, opacity 0.05s linear, filter 0.05s linear;
+    /* 스크롤 반응 부드럽게 */
+    will-change: transform, opacity, filter;
 }
 
 .main_visual .inner {
@@ -18,7 +46,7 @@
 .main_visual .inner .swiper {
     width: 100%;
     height: 100%;
-      overflow: hidden;
+    overflow: hidden;
 }
 
 .main_visual .inner .swiper .swiper-wrapper {
@@ -34,18 +62,17 @@
     background-size: cover;
 }
 
-
 .main_visual .swiper-slide .txt_box {
     max-width: 1520px;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-        padding: 0 var(--main_visual_gutter);   
-            box-sizing: border-box;
+    padding: 0 var(--main_visual_gutter);
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 38px;
 }
 
 .main_visual .swiper-slide .txt_box h2 {
@@ -80,29 +107,35 @@
     line-height: normal;
 }
 
-
-
 .main_visual .slide1 {
     background-image: url("../asset/img/main01.jpg");
+    --txt-left: 5%;
+    --txt-top: -20%;
+
 }
 
 .main_visual .slide2 {
     background-image: url("../asset/img/main02.jpg");
-        --txt-left: 28.645833%;  /* [추가] 550 / 1920 * 100 */
-    --txt-top:  61.224490%;  /* [추가] 600 / 980  * 100 */
+    --txt-left: 28%;
+    /* [추가] 550 / 1920 * 100 */
+    --txt-top: 60%;
+    /* [추가] 600 / 980  * 100 */
 }
 
 .main_visual .slide3 {
     background-image: url("../asset/img/main03.jpg");
-    opacity: 0.6;
-        --txt-left: 67.708333%;  /* [추가] 1300 / 1920 * 100 */
-    --txt-top:   4.081633%;  /* [추가] 40   / 980  * 100 */
+    --txt-left: 67%;
+    /* [추가] 1300 / 1920 * 100 */
+    --txt-top: 4%;
+    /* [추가] 40   / 980  * 100 */
 }
 
 .main_visual .slide4 {
     background-image: url("../asset/img/main04.jpg");
-     --txt-left:  5.208333%;  /* [추가] 100  / 1920 * 100 */
-    --txt-top: -20.408163%;  /* [추가] -200 / 980  * 100 */
+    --txt-left: 4%;
+    /* [추가] 100  / 1920 * 100 */
+    --txt-top: -20%;
+    /* [추가] -200 / 980  * 100 */
 }
 
 .main_visual .swiper-slide {
@@ -122,63 +155,85 @@
     z-index: 2;
 }
 
-.main_visual .slide2 .txt_box{
-  position: absolute;
-    top: 600px;
-    left: 550px;
-    height: auto;
-    justify-content: flex-start;
+/* =========================
+   INTRO: BG FADE IN (배경만)
+   ========================= */
+
+.main_visual .swiper-slide {
+    background-image: none;
 }
 
-.main_visual .slide3 .txt_box{
+.main_visual .swiper-slide::after {
+    content: "";
     position: absolute;
-    left: 1300px;
-    top: 40px;
+    inset: 0;
+    z-index: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    opacity: 0;
+    transition: opacity 2.0s ease-out;
+    will-change: opacity;
 }
 
-.main_visual .slide4 .txt_box{
-    position: absolute;
-    left: 100px;
-    top: -200px;
+.main_visual .slide1::after {
+    background-image: url("../asset/img/main01.jpg");
 }
+
+.main_visual .slide2::after {
+    background-image: url("../asset/img/main02.jpg");
+}
+
+.main_visual .slide3::after {
+    background-image: url("../asset/img/main03.jpg");
+}
+
+.main_visual .slide4::after {
+    background-image: url("../asset/img/main04.jpg");
+}
+
+.main_visual .swiper-slide-active::after {
+    opacity: 1;
+}
+
+.main_visual.intro-bg .swiper-slide-active::after {
+    opacity: 1;
+}
+
+.main_visual .swiper-slide::before {
+    z-index: 1;
+}
+
+.main_visual .swiper-slide .txt_box {
+    z-index: 2;
+}
+
+.main_visual .slide1 .txt_box,
 .main_visual .slide2 .txt_box,
 .main_visual .slide3 .txt_box,
-.main_visual .slide4 .txt_box{
-    position: absolute; /* [유지] */
+.main_visual .slide4 .txt_box {
+    position: absolute;
 
-    /* [추가] px 대신 변수(%)로 위치 관리 */
     left: var(--txt-left);
     top: var(--txt-top);
-
-    /* [추가]
-       - 핵심: 기존 width:100% 때문에 가로 overflow가 생김 -> auto로 변경 */
     width: auto;
-max-width: calc(100% - var(--txt-left) - var(--main_visual_gutter));
-
-    /* [추가] absolute에서 불필요한 auto margin 제거(예상치 못한 계산 방지) */
+    max-width: calc(100% - var(--txt-left) - var(--main_visual_gutter));
     margin: 0;
-
-    /* [수정]
-       - 기존: padding: 0 clamp(...) (좌우 패딩)
-       - 변경: 왼쪽 패딩만 유지(텍스트 시작 X좌표 유지), 오른쪽 패딩 제거(폭 증가 방지)
-       - 텍스트 위치를 앞으로/뒤로 미세 조정하려면 var(--main_visual_gutter) 값을 조정 */
     padding: 0 0 0 var(--main_visual_gutter);
 }
 
-/* [추가]
-   - slide2는 기존처럼 "top 기준으로 내려온 위치에서 시작"해야 해서 height/정렬만 유지 */
-.main_visual .slide2 .txt_box{
-    height: auto;                 /* [유지] */
-    justify-content: flex-start;   /* [유지] */
+.main_visual .slide2 .txt_box {
+    height: auto;
+    justify-content: flex-start;
 }
-
 
 /* =========================
    BESTSELLER
    ========================= */
 .bestseller {
     width: 100%;
-    padding: 190px 0 220px;
+    padding: 50px 0 220px;
 }
 
 .bestseller .inner {

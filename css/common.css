@@ -26,8 +26,69 @@ body {
 }
 
 /* =========================
+   INTRO STATE
+   ========================= */
+header.intro-hide .top,
+header.intro-hide .bottom {
+    transform: translateY(calc(-1 * var(--header-total-h)));
+    transition: transform .35s ease;
+}
+
+/* 인트로 동안 클릭 방지(실수로 메뉴 열리는 것 방지) */
+header.intro-hide {
+    pointer-events: none;
+}
+
+/* STEP1: 0s~0.8s - 텍스트는 완전 숨김 */
+.main_visual .slide1 .txt_box h2,
+.main_visual .slide1 .txt_box>span,
+.main_visual .slide1 .txt_box .more {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 1.6s ease-out, transform .7s ease-out;
+    will-change: opacity, transform;
+}
+
+/* STEP2: 0.8s~1.6s - 순차 등장 */
+.main_visual.intro-text .slide1 .txt_box h2 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+.main_visual.intro-text .slide1 .txt_box>span {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .12s;
+}
+
+.main_visual.intro-text .slide1 .txt_box .more {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: .24s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    header.intro-hide .top,
+    header.intro-hide .bottom {
+        transition: none;
+        transform: none;
+    }
+
+    .main_visual .slide1 .txt_box h2,
+    .main_visual .slide1 .txt_box>span,
+    .main_visual .slide1 .txt_box .more {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* =========================
    HEADER
    ========================= */
+
 
 header {
     width: 100%;
