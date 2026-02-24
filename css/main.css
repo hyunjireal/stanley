@@ -70,14 +70,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 16px;
 }
 
 .main_visual .swiper-slide .txt_box h2 {
     font-family: "Cormorant Garamond", serif;
     font-weight: 600;
     font-size: 80px;
-    letter-spacing: 1px;
+    letter-spacing: -1%;
     color: #ddd;
 }
 
@@ -86,7 +86,7 @@
     font-weight: 300;
     font-size: 16px;
     line-height: normal;
-    letter-spacing: 1px;
+    letter-spacing: -3%;
     color: #ddd;
     padding-bottom: 26px;
 }
@@ -251,7 +251,6 @@
     will-change: transform, opacity;
 }
 
-/* 완전히 보일 때 더 또렷하게 */
 .bestseller.is-in {
     opacity: 1;
     transform: translateY(0);
@@ -272,15 +271,16 @@
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 600;
     font-size: 40px;
-    letter-spacing: 4px;
+    letter-spacing: 1%;
 }
 
 .bestseller .inner>span {
-    margin-top: 20px;
+    margin-top: 26px;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
-    font-size: 16px;
-    padding-bottom: 40px;
+    font-size: 18px;
+    padding-bottom: 50px;
+    letter-spacing: -1%;
 }
 
 .bestseller .inner ul {
@@ -316,14 +316,12 @@
     transition-delay: 160ms;
 }
 
-
 .bestseller .inner ul li {
     position: relative;
     overflow: hidden;
     transition: border-radius .3s ease, transform .3s ease;
     box-shadow: 8px 8px 30px rgba(0, 0, 0, 0.3);
     border-radius: 80px;
-
 }
 
 .bestseller .inner ul li:hover {
@@ -387,17 +385,21 @@
     width: 100%;
     text-align: left;
     font-family: "Cormorant Garamond", serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 50px;
     line-height: normal;
-    letter-spacing: 1px;
+    letter-spacing: -3%;
+}
+
+.bestseller ul li:first-child .scene_con .txt_box h3 {
+    letter-spacing: -1%;
 }
 
 .bestseller .scene_con .txt_box p {
     width: 100%;
     text-align: left;
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
     line-height: normal;
     letter-spacing: -1px;
@@ -413,7 +415,7 @@
    ========================= */
 .qna {
     width: 100%;
-    padding: 140px 0px 120px 0px;
+    padding: 140px 0px 80px 0px;
     background: #fafafa;
     position: relative;
     overflow: hidden;
@@ -423,7 +425,6 @@
     will-change: transform, opacity;
 }
 
-/* 섹션 들어오면 */
 .qna.is-in {
     opacity: 1;
     transform: translateY(0);
@@ -440,21 +441,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    gap: 10px;
 }
 
 .qna .tit h2 {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 600;
     font-size: 40px;
-    letter-spacing: 4px;
-
+    letter-spacing: 2%;
 }
 
 .qna .tit span {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 20px;
+    letter-spacing: -1%;
 }
 
 .qna .tit_bottom {
@@ -539,8 +541,7 @@
 
 .qna .qna_swiper .qna_card a .con_top em {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 600;
-    /* semibold */
+    font-weight: 500;
     font-size: 12px;
     line-height: normal;
     letter-spacing: 0;
@@ -550,9 +551,10 @@
 .qna .qna_swiper .qna_card a .con_top p {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 16px;
     line-height: normal;
-    letter-spacing: 0;
+    letter-spacing: -5%;
+    color: #292727;
 }
 
 .qna .qna_swiper .qna_card a .con_bottom {
@@ -608,14 +610,15 @@
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 600;
     font-size: 40px;
-    letter-spacing: 4px;
+    letter-spacing: 2%;
 }
 
 .category .txt_box span {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 20px;
+    letter-spacing: -1%;
 }
 
 .category .con_box {
@@ -727,8 +730,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
-    /* 요소 간 기본 간격 (필요시 조정) */
     opacity: 0;
     transform: translateY(14px);
     transition: opacity .7s ease, transform .7s ease;
@@ -743,27 +744,17 @@
 .sns .txt_box span {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 300;
-    font-size: 12px;
+    font-size: 14px;
     line-height: normal;
-    letter-spacing: 3.6px;
+    letter-spacing: 18%;
+    padding-bottom: 20px;
 }
 
 .sns .txt_box h2 {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 600;
     font-size: 40px;
-    letter-spacing: 0.25%;
-}
-
-.sns .txt_box p {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: normal;
-    letter-spacing: 0;
-    margin: 0;
-    opacity: 0.8;
-    /* 선택: 보조문구 느낌(원치 않으면 삭제) */
+    letter-spacing: -1%;
 }
 
 .sns .sns_btn {
@@ -772,23 +763,32 @@
 }
 
 .sns .sns_btn a {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: normal;
-    letter-spacing: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 44px;
-    border: 1px solid #ddd;
-    border-radius: 999px;
+    display: inline-block;
 }
 
-.sns .sns_btn a:hover {
+.sns .sns_btn a span {
+    position: relative;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.sns .sns_btn a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 14px;
+    width: 0;
+    height: 1px;
     background: #000;
-    color: #fff;
+    transition: width .35s cubic-bezier(.22, .61, .36, 1);
+}
+
+.sns .sns_btn a:hover span::after {
+    width: 100%;
 }
 
 .sns .con_box {
@@ -816,9 +816,6 @@
     max-width: 380px;
     flex: 1 1 380px;
     aspect-ratio: 380 / 450;
-    /* 
-    position: relative;
-    z-index: 0; */
 }
 
 .sns .sns_card:hover {
@@ -861,7 +858,6 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 10px;
     z-index: 1;
     opacity: 0;
     pointer-events: none;
@@ -898,16 +894,16 @@
 .sns .layer-text h2 {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 500;
-    font-size: 26px;
-    letter-spacing: 0.5px;
+    font-size: 30px;
+    letter-spacing: -1%;
     line-height: normal;
 }
 
 .sns .layer-text p {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 500;
-    font-size: 14px;
-    letter-spacing: .5px;
+    font-weight: 300;
+    font-size: 17px;
+    letter-spacing: -4%;
     line-height: normal;
 }
 
@@ -991,9 +987,7 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 60px;
 }
-
 
 .brand .txt_box {
     width: 100%;
@@ -1001,8 +995,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 24px;
+    gap: 18px;
     text-align: center;
+}
+
+.brand .txt_box span {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: normal;
+    letter-spacing: 18%;
 }
 
 .brand .txt_box h2 {
@@ -1010,16 +1012,8 @@
     font-weight: 600;
     font-size: 40px;
     line-height: normal;
-    letter-spacing: 0.1px;
-    margin: 0;
-}
-
-.brand .txt_box span {
-    font-family: "Noto Sans KR", sans-serif;
-    font-weight: 300;
-    font-size: 12px;
-    line-height: normal;
-    letter-spacing: 3.6px;
+    letter-spacing: 1%;
+    padding-bottom: 60px;
 }
 
 .brand .img_box {
@@ -1077,10 +1071,8 @@
     flex-direction: column;
     gap: 12px;
     align-items: flex-start;
-    /* 왼쪽 위 정렬 */
     justify-content: flex-start;
     box-sizing: border-box;
-    /* padding 필요하면 여기서 추가 */
 }
 
 .brand .con_bottom h3 {
@@ -1095,18 +1087,19 @@
 .brand .con_bottom span {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
-    font-size: 10px;
+    font-size: 14px;
     line-height: 16px;
-    letter-spacing: 2px;
+    letter-spacing: 5%;
 }
 
 .brand .con_bottom p {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 27.2px;
-    letter-spacing: 0;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 22px;
+    letter-spacing: -1%;
     margin: 0;
+    word-break: keep-all;
 }
 
 .brand .more_box {
@@ -1118,6 +1111,16 @@
     justify-content: flex-start;
     gap: 48px;
 }
+
+.brand .more_box::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: #111;
+    margin: 0 auto 40px;
+}
+
 
 .brand .more_top,
 .brand .more_bottom {
@@ -1131,10 +1134,10 @@
 
 .brand .more_top p {
     font-family: "Noto Sans KR", sans-serif;
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 26px;
-    letter-spacing: 0;
+    letter-spacing: -3.5%;
     margin: 0;
 }
 
@@ -1142,16 +1145,35 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 32px;
+    gap: 45px;
 }
 
-.brand .more_bottom a {
-    text-decoration: none;
-    color: inherit;
+.brand .more_bottom a span {
+    position: relative;
+    display: inline-block;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0;
+}
+
+.brand .more_bottom a span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 1px;
+    background: #000;
+    transition: width .35s cubic-bezier(.22, .61, .36, 1);
+}
+
+.brand .more_bottom a:hover span::after {
+    width: 100%;
 }
 
 /* ===== BRAND scroll reveal ===== */
-
 .brand .txt_box span,
 .brand .txt_box h2,
 .brand .img_box,
@@ -1200,7 +1222,6 @@
     transition-delay: 1.15s;
 }
 
-/* (선택) 접근성: 모션 줄이기 설정 */
 @media (prefers-reduced-motion: reduce) {
 
     .brand .txt_box span,
